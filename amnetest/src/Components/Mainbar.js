@@ -7,6 +7,11 @@ const logoStyle = {
   width: '8em'
 };
 
+const downloadLink = {
+  float: 'right',
+  margin: "20px 40px 50px 60px"
+}
+
 class Home extends React.Component{
   render(){
     return (
@@ -21,6 +26,7 @@ class NavBar extends React.Component{
       <div>
       <Home />
       <NewFeature />
+      <RawFile />
       </div>
     );
   }
@@ -29,10 +35,23 @@ class NavBar extends React.Component{
 class NewFeature extends React.Component{
   render(){
     return(
-      <a href="API_Key.txt" download> Download raw </a>
+    <div style={downloadLink}>
+    <a href={require("./API_Key.txt")} download> New Feature Proposal </a>
+    </div>
     );
   }
 }
+
+class RawFile extends React.Component{
+  render(){
+    return(
+    <div style={downloadLink}>
+    <a href={require("./API_Key.txt")} download> Download Raw File </a>
+    </div>
+    );
+  }
+}
+
 
 
 export default NavBar;
