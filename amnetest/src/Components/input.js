@@ -14,35 +14,20 @@ class InputField extends React.Component{
   constructor(props){
     super(props);
     this.state = {firstAddress: "", secondAddress:"", radius: "10", searchterm: "Real estate Agencies", result : ""};
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleChange(e){
-    var text = e.target.value;
-    var state = this.state;
-    if (e.target.getAttribute("id") === "firstAddress"){
-      state.firstAddress = text;
-    }
-    else{
-      state.secondAddress = text;
-    }
-    this.setState(state);
 
-    e.preventDefault();
-  }
 
 handleInputChange(e){
   var state = this.state;
   var text = e.target.value;
-  if(e.target.getAttribute("id") === "radius"){
-    state.radius = text;
-  } else{
-    state.searchterm = text;
-  }
+  var id = e.target.getAttribute("id");
+  state[id] = text;
   this.setState(state);
+  e.preventDefault();
 }
 
 
@@ -51,9 +36,9 @@ handleSubmit(e){
   if ((state.firstAddress === "") || (state.secondAddress === "")){
     alert("Both fields are required.")
   }
-  state.result = <FetchData address={this.state} />;
-
-  this.setState(state)
+  state['result'] = <FetchData state={this.state}/>
+  console.log(this.state);
+  this.setState(state);
 }
 
   handleSelect(place,id){
@@ -72,17 +57,17 @@ handleSubmit(e){
     return(
       <div>
         <h4>First Address: </h4>
-        <Autocomplete onChange={this.handleChange} onClick={this.handleChange} id="firstAddress" style={{width: '190%'}}
+        <Autocomplete onChange={this.handleInputChange} onClick={this.handleInputChange} id="firstAddress" style={{width: '190%'}}
         onPlaceSelected={(place) => this.handleSelect(place,"firstAddress")} types={['address']} />
         <h5 style={{color: "blue"}}>{this.state.firstAddress} </h5>
         <h4>Second Address: </h4>
-        <Autocomplete onChange={this.handleChange} onClick={this.handleChange} id="secondAddress" style={{width: '190%'}}
+        <Autocomplete onChange={this.handleInputChange} onClick={this.handleInputChange} id="secondAddress" style={{width: '190%'}}
         onPlaceSelected={(place) => this.handleSelect(place,"secondAddress")} types={['address']} />
         <h5 style={{color:"blue"}}>{this.state.secondAddress} </h5>
         <h4>Enter Radius(Miles):</h4>
-        <input type="text" id="radius" onChange={this.handleInputChange}/>
+        <input type="text" id="radius" placeholder="10" onChange={this.handleInputChange}/>
         <h4>Enter Search Term: </h4>
-        <input type="text" id="searchterm" value="Real Estate Agencies" onChange={this.handleInputChange}/>
+        <input type="text" id="searchterm" placeholder="Real Estate Agencies" onChange={this.handleInputChange}/>
 
         <button style={buttonStyle} onClick={this.handleSubmit}>Fetch Agencies </button>
 
