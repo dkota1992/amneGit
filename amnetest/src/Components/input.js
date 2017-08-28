@@ -1,6 +1,7 @@
 import React from 'react';
 import FetchData from "./FetchData.js";
 import Autocomplete from 'react-google-autocomplete';
+import PlacesAutoComplete from 'react-places-autocomplete';
 import ReactDOM from "react-dom";
 
 const buttonStyle = {
@@ -14,6 +15,7 @@ class InputField extends React.Component{
     this.state = {firstAddress: "", secondAddress:"" ,result : ""};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(e){
@@ -25,7 +27,8 @@ class InputField extends React.Component{
     else{
       state.secondAddress = text;
     }
-    this.setState(state)
+    this.setState(state);
+
     e.preventDefault();
   }
 
@@ -39,17 +42,32 @@ handleSubmit(e){
   this.setState(state)
 }
 
+  handleSelect(place,id){
+    var state = this.state;
+    var text = place.formatted_address;
+    if (id === "firstAddress"){
+      state.firstAddress = text;
+    }
+    else{
+      state.secondAddress = text;
+    }
+    this.setState(state);
+  }
+
   render(){
     return(
       <div>
         <h4>First Address: </h4>
-        <input onChange={this.handleChange} type="text" id="firstAddress" value={this.props.value} />
+        <Autocomplete onChange={this.handleChange} onClick={this.handleChange} id="firstAddress" style={{width: '190%'}}
+        onPlaceSelected={(place) => this.handleSelect(place,"firstAddress")} types={['address']} />
         <h5>{this.state.firstAddress} </h5>
         <h4>Second Address: </h4>
-        <input onChange={this.handleChange} type="text" id="secondAddress" value={this.props.value} />
+        <Autocomplete onChange={this.handleChange} onClick={this.handleChange} id="secondAddress" style={{width: '190%'}}
+        onPlaceSelected={(place) => this.handleSelect(place,"secondAddress")} types={['address']} />
         <h5>{this.state.secondAddress} </h5>
         <button style={buttonStyle} onClick={this.handleSubmit}>Fetch Agencies </button>
         <div className="result"> {this.state.result} </div>
+
       </div>
     );
   }
