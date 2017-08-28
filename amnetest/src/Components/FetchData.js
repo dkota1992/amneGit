@@ -8,33 +8,66 @@ class FetchData extends React.Component{
     this.state = {firstAddress : "", secondAddress: "", firstAddressFetch: "", secondAddressFetch: ""};
   }
 
-  componentDidMount(){
-    console.log("Wassup Assole");
-  }
 
   componentWillMount(){
-    var location = this.props.state.firstAddress;
+    console.log(this.state);
+    var url = 'https://maps.googleapis.com/maps/api/geocode/json';
+    this.updateInputState(url,this.props.state.secondAddress,"secondAddress");
+    this.updateInputState(url,this.props.state.firstAddress,"firstAddress");
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+    this.updateFetch(proxyurl+url,"38.9974224,-76.8692602","firstAddressFetch");
+    console.log(this.state);
+
+}
+
+
+  updateInputState(url,location,id){
     var self = this;
-    axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+    var state = this.state;
+    axios.get(url,{
       params: {
         address: location,
         key: key
       }
     })
     .then(function (response) {
-      console.log(response);
-      console.log(response.data);
-       self.setState({firstAddress: response.data});
+      state[id] = response.data;
+      console.log(state)
+       self.setState(state);
      })
      .catch(function(error){
        console.log(error);
      });
-}
+  }
+
+  updateFetch(url,location,id){
+    var self = this;
+    var state = this.state;
+    axios.get(url,{
+      params: {
+        location: location,
+        radius: 1000,
+        type: this.props.state.searchterm,
+        key: key
+      }
+    })
+    .then(function (response) {
+      state[id] = response.data;
+      console.log(state)
+       self.setState(state);
+     })
+     .catch(function(error){
+       console.log(error);
+     });
+  }
 
   render(){
     return(
       <div style={{width:300, height:300, backgroundColor:"green"}}>
           {this.state.firstAddress.status}
+          {this.state.firstAddressFetch.status}
+
       </div>
     );
   }
