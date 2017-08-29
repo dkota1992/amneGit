@@ -1,7 +1,7 @@
 import React from "react";
 
 var filePath = {
-  newfeature: require("./API_Key.txt"),
+  newfeature: require("./Amne\ Proposal.docx"),
   rawfile: require("./API_Key.txt")
 };
 

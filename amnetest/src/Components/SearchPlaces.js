@@ -64,7 +64,7 @@ class SearchPlace extends React.Component{
       params: {
         location: location,
         radius: self.props.state.radius+"000",
-        type: self.props.state.type,
+        query: self.props.state.type,
         key: key
       }
     })
