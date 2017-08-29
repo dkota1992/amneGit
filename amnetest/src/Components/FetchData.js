@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SearchPlace from "./SearchPlaces.js"
 
-var key = 'AIzaSyDN-my3Pi1wsJyYxT8EZa2mSMEFJxkWwUk'
+var key = 'AIzaSyCUaItdUlBQhdXQ-dCSfrWadhxXw_D6AEk'
 
 class FetchData extends React.Component{
   constructor(props){
@@ -42,10 +42,9 @@ class FetchData extends React.Component{
 
   render(){
     var places = ""
-    console.log("OK");
     if ((this.state.secondAddress.status === "OK") && (this.state.firstAddress.status === "OK")){
-      console.log(this.state);
       places = <SearchPlace state={this.state} />
+      console.log(this.state);
     }
     return(
       <div className="results">

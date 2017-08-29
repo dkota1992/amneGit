@@ -14,8 +14,7 @@ class Places extends React.Component{
     return(
       <div className="Places">
         <h5> {items} </h5>
-
-      </div>
+         </div>
     );
   }
 }

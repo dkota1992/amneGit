@@ -6,12 +6,14 @@ class SortCloser extends React.Component{
     super(props);
     this.state = {distance: this.props.distance, destinations: this.props.destinations}
     this.objectify = this.objectify.bind(this);
+    console.log(this.state);
   }
 
   sort(arr){
     arr.sort(function(a, b) {
     return (a.distances.sum).localeCompare(b.distances.sum)
     });
+    console.log("SortedArray",arr);
     return arr;
   }
 
@@ -40,19 +42,13 @@ class SortCloser extends React.Component{
     var sorted = this.sort(unsorted);
     items = sorted.map(places => {
       return(
-      <SortedItem place={places}/>
+      <SortedItem place={places} origin={this.state.distance.origin_addresses}/>
     );
   })
     return(
-      <Table>
-      <tr>
-          <th> Name of Company </th>
-          <th> Distance from {this.state.distance.origin[0]} </th>
-          <th> Distance from {this.state.distance.origing[1]} </th>
-          <th> Address </th>
-       </tr>
+      <div>
       {items}
-      </Table>
+      </div>
     );
   }
 }

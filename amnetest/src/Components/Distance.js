@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SortCloser from "./SortCloser";
 
-var key = "AIzaSyDN-my3Pi1wsJyYxT8EZa2mSMEFJxkWwUk"
+var key = "AIzaSyCUaItdUlBQhdXQ-dCSfrWadhxXw_D6AEk"
 
 class Distance extends React.Component{
   constructor(props){
@@ -14,7 +14,6 @@ class Distance extends React.Component{
 
 
   componentWillMount(){
-    console.log(this.props,this.state);
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
     var first_address = this.state.firstAddress.results[0].geometry.location.lat + "," +
@@ -48,7 +47,6 @@ class Distance extends React.Component{
     })
     .then(function (response) {
       state[id] = response.data;
-      console.log(state)
        self.setState(state);
      })
      .catch(function(error){

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Places from "./Places.js";
 import Distance from "./Distance";
 
-var key = 'AIzaSyDN-my3Pi1wsJyYxT8EZa2mSMEFJxkWwUk';
+var key = 'AIzaSyCUaItdUlBQhdXQ-dCSfrWadhxXw_D6AEk';
 
 class SearchPlace extends React.Component{
   constructor(props){
@@ -17,13 +17,13 @@ class SearchPlace extends React.Component{
     var places = "";
 
     if ((this.state.secondAddressFetch.status === "OK") && (this.state.firstAddressFetch.status === "OK")){
-
       places = this.avoidDuplicates();
       var distance = <Distance destinations={places} origin1={this.state.firstAddress} origin2={this.state.secondAddress} />;
-      // places = <Places places={places} />;
+      places = <Places places={places} />;
     }
     return(
-      <div > {distance} </div>
+      <div > {distance}
+       </div>
     );
   }
 
@@ -63,7 +63,7 @@ class SearchPlace extends React.Component{
     axios.get(url,{
       params: {
         location: location,
-        radius: self.props.state.radius+"0000",
+        radius: self.props.state.radius+"00",
         type: self.props.state.type,
         key: key
       }
