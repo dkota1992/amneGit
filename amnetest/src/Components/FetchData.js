@@ -48,7 +48,7 @@ class FetchData extends React.Component{
       console.log("Rendered");
     }
     return(
-      <div style={{width:900, float:"left", height:700, backgroundColor:"green"}}>
+      <div className="results">
         {places}
 
       </div>

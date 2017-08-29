@@ -13,7 +13,7 @@ const buttonStyle = {
 class InputField extends React.Component{
   constructor(props){
     super(props);
-    this.state = {firstAddress: "", secondAddress:"", radius: "10", searchterm: "Real estate Agencies", result : ""};
+    this.state = {firstAddress: "", secondAddress:"", radius: "10", searchterm: "Real estate Agency", result : ""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,7 +69,7 @@ handleSubmit(e){
         <h4>Enter Radius(Miles):</h4>
         <input type="text" id="radius" placeholder="10" onChange={this.handleInputChange}/>
         <h4>Enter Search Term: </h4>
-        <input type="text" id="searchterm" placeholder="Real Estate Agencies" onChange={this.handleInputChange}/>
+        <input type="text" id="searchterm" placeholder="Real Estate Agency" onChange={this.handleInputChange}/>
 
         <button style={buttonStyle} onClick={this.handleSubmit}>Fetch Agencies </button>
 
