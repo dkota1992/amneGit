@@ -32,7 +32,6 @@ handleInputChange(e){
 handleSubmit(e){
 
   var state = this.state;
-  console.log(this.state);
   state.result = ""
   if ((state.firstAddress === "") || (state.secondAddress === "")){
     alert("Both fields are required.");

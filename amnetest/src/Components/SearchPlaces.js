@@ -32,7 +32,9 @@ class SearchPlace extends React.Component{
     var places_array = (this.state.secondAddressFetch.results).concat(this.state.firstAddressFetch.results);
 
     places_array.forEach(function(o){
+      if(o.id){
         hashesFound[o.id] = o;
+      }
     })
 
     var results = Object.keys(hashesFound).map(function(k){

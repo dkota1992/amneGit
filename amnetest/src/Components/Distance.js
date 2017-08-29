@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import SortCloser from "./SortCloser";
 
 var key = 'AIzaSyAPiTf3PgAhAI1iFblJrTlt8GXbHOgJXQ0';
 
 class Distance extends React.Component{
   constructor(props){
     super(props);
-    this.state= {firstAddress: this.props.origin1, secondAddress: this.props.origin2};
+    this.state= {firstAddress: this.props.origin1, secondAddress: this.props.origin2, distance: ""};
     this.distance = this.distance.bind(this);
     this.destinations = this.destinations.bind(this);
   }
 
 
   componentWillMount(){
-    console.log(this.props,this.state);
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
@@ -57,8 +57,12 @@ class Distance extends React.Component{
   }
 
     render(){
+      var sorted = "";
+      if (this.state.distance.status === "OK"){
+        sorted = <SortCloser distance={this.state.distance} destinations={this.props.destinations}/>
+      }
       return(
-        <div> Hello </div>
+        <div> {sorted} </div>
       );
     }
   }
