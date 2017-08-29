@@ -9,8 +9,7 @@ class SortCloser extends React.Component{
 
   sort(arr){
     arr.sort(function(a, b) {
-    return (a.distances.sum).localeCompare(b.distances.sum);
-
+    return (a.distances.sum).localeCompare(b.distances.sum)
     });
     return arr;
   }
@@ -24,10 +23,10 @@ class SortCloser extends React.Component{
     var temp = "";
     for(var i=0; i<this.state.destinations.length; i++){
       temp = {formatted_address :this.state.distance.destination_addresses[i], location: this.state.destinations[i].name,
-          distances: [{from_origin1: this.state.distance.rows[0].elements[i].distance.text,
+          distances:{from_origin1: this.state.distance.rows[0].elements[i].distance.text,
               from_origin2: this.state.distance.rows[1].elements[i].distance.text,
               sum: String(Number(parseFloat(this.state.distance.rows[0].elements[i].distance.text) +
-                  parseFloat(this.state.distance.rows[1].elements[i].distance.text)).toFixed(1))+ " km"}]};
+                  parseFloat(this.state.distance.rows[1].elements[i].distance.text)).toFixed(1))+ " km"}};
 
       unSorted.push(temp);
     }
@@ -36,7 +35,7 @@ class SortCloser extends React.Component{
 
   render(){
     var unsorted = this.objectify();
-    console.log(this.sort(unsorted));
+    console.log("Sorted",this.sort(unsorted));
     return(
       <div> </div>
     );

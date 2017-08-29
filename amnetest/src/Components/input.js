@@ -1,6 +1,8 @@
 import React from 'react';
 import FetchData from "./FetchData.js";
 import Autocomplete from 'react-google-autocomplete';
+import PlacesAutoComplete from 'react-places-autocomplete';
+import ReactDOM from "react-dom";
 
 const buttonStyle = {
   margin: "20px 20px 20px 20px",
