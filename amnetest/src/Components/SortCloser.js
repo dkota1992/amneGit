@@ -1,4 +1,5 @@
 import React from 'react';
+import SortedItem from "./SortedItem";
 
 class SortCloser extends React.Component{
   constructor(props){
@@ -34,10 +35,24 @@ class SortCloser extends React.Component{
   }
 
   render(){
+    let items;
     var unsorted = this.objectify();
-    console.log("Sorted",this.sort(unsorted));
+    var sorted = this.sort(unsorted);
+    items = sorted.map(places => {
+      return(
+      <SortedItem place={places}/>
+    );
+  })
     return(
-      <div> </div>
+      <Table>
+      <tr>
+          <th> Name of Company </th>
+          <th> Distance from {this.state.distance.origin[0]} </th>
+          <th> Distance from {this.state.distance.origing[1]} </th>
+          <th> Address </th>
+       </tr>
+      {items}
+      </Table>
     );
   }
 }
