@@ -17,6 +17,12 @@
   width: 600%;
 }
 
+.newsearch{
+  background-color: #d64848;
+  color: black;
+  width: 130%;
+  margin: 25px 20px 25px 25px;
+}
 .App-header {
   background-color: #222;
   height: 150px;

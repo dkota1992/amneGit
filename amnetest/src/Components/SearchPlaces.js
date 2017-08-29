@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Places from "./Places.js";
-import _ from "lodash";
+import Distance from "./Distance";
 
-var key = 'AIzaSyAPiTf3PgAhAI1iFblJrTlt8GXbHOgJXQ0'
+var key = 'AIzaSyAPiTf3PgAhAI1iFblJrTlt8GXbHOgJXQ0';
 
 class SearchPlace extends React.Component{
   constructor(props){
@@ -16,12 +16,12 @@ class SearchPlace extends React.Component{
   render(){
     var places = "";
     if (this.state.secondAddressFetch.status === "OK"){
-      var places = this.avoidDuplicates();
-      console.log(this.avoidDuplicates());
-      places = <Places places={places} />;
+      places = this.avoidDuplicates();
+      var distance = <Distance destinations={places} origin1={this.state.firstAddress} origin2={this.state.secondAddress} />;
+      // places = <Places places={places} />;
     }
     return(
-      <div > {places} </div>
+      <div > {distance} </div>
     );
   }
 
@@ -48,7 +48,6 @@ class SearchPlace extends React.Component{
                   this.state.firstAddress.results[0].geometry.location.lng;
     var second_address = this.state.secondAddress.results[0].geometry.location.lat + "," +
                   this.state.secondAddress.results[0].geometry.location.lng;
-    console.log(first_address,second_address, 44);
     this.updateFetch(proxyurl+url,first_address,"firstAddressFetch");
     this.updateFetch(proxyurl+url,second_address,"secondAddressFetch");
 
@@ -60,14 +59,13 @@ class SearchPlace extends React.Component{
     axios.get(url,{
       params: {
         location: location,
-        radius: self.props.state.radius+"00",
+        radius: self.props.state.radius+"0000",
         type: self.props.state.type,
         key: key
       }
     })
     .then(function (response) {
       state[id] = response.data;
-      console.log(state)
        self.setState(state);
      })
      .catch(function(error){

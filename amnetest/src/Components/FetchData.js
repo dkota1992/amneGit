@@ -16,7 +16,6 @@ class FetchData extends React.Component{
 
   componentWillMount()
   {
-    console.log("Mounted");
     var url = 'https://maps.googleapis.com/maps/api/geocode/json';
     this.updateInputState(url,this.props.state.secondAddress,"secondAddress");
     this.updateInputState(url,this.props.state.firstAddress,"firstAddress");
@@ -45,7 +44,6 @@ class FetchData extends React.Component{
     var places = ""
     if ((this.state.secondAddress.status === "OK") && (this.state.firstAddress.status === "OK")){
       places = <SearchPlace state={this.state} />
-      console.log("Rendered");
     }
     return(
       <div className="results">

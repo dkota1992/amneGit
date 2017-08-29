@@ -1,8 +1,6 @@
 import React from 'react';
 import FetchData from "./FetchData.js";
 import Autocomplete from 'react-google-autocomplete';
-import PlacesAutoComplete from 'react-places-autocomplete';
-import ReactDOM from "react-dom";
 
 const buttonStyle = {
   margin: "20px 20px 20px 20px",
@@ -71,7 +69,8 @@ handleSubmit(e){
         <h4>Enter Search Term: </h4>
         <input type="text" id="searchterm" placeholder="Real Estate Agency" onChange={this.handleInputChange}/>
 
-        <button style={buttonStyle} onClick={this.handleSubmit}>Fetch Agencies </button>
+        <button style={buttonStyle} id="btn1" onClick={this.handleSubmit}>Fetch Agencies </button>
+        <a href="./" ><button className="newsearch"> New Search </button> </a>
 
         <div className="result"> {this.state.result} </div>
 

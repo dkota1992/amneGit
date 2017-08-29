@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Testclass from './Components/Testclass.js';
 import NavBar from "./Components/Mainbar.js";
 import InputField from "./Components/input.js"
 import './App.css'
