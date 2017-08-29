@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Places from "./Places.js";
 
 var key = 'AIzaSyAPiTf3PgAhAI1iFblJrTlt8GXbHOgJXQ0'
 
@@ -14,7 +15,8 @@ class SearchPlace extends React.Component{
   render(){
     var places = "";
     if (this.state.secondAddressFetch.status === "OK"){
-      places = this.state.secondAddressFetch.results[0].types[1];
+      var places = (this.state.secondAddressFetch.results).concat(this.state.firstAddressFetch.results)
+      places = <Places places={places} />;
     }
     return(
       <div > {places} </div>
