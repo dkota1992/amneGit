@@ -6,14 +6,12 @@ class SortCloser extends React.Component{
     super(props);
     this.state = {distance: this.props.distance, destinations: this.props.destinations}
     this.objectify = this.objectify.bind(this);
-    console.log(this.state);
   }
 
   sort(arr){
     arr.sort(function(a, b) {
     return (a.distances.sum).localeCompare(b.distances.sum)
     });
-    console.log("SortedArray",arr);
     return arr;
   }
 

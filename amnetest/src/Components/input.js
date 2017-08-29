@@ -65,7 +65,7 @@ handleSubmit(e){
         <Autocomplete onChange={this.handleInputChange} onClick={this.handleInputChange} id="secondAddress" style={{width: '190%'}}
         onPlaceSelected={(place) => this.handleSelect(place,"secondAddress")} types={['address']} />
         <h5 style={{color:"blue"}}>{this.state.secondAddress} </h5>
-        <h4>Enter Radius(Miles):</h4>
+        <h4>Enter Radius(Kilo-Meter):</h4>
         <input type="text" id="radius" placeholder="10" onChange={this.handleInputChange}/>
         <h4>Enter Search Term: </h4>
         <input type="text" id="searchterm" placeholder="Real Estate Agency" onChange={this.handleInputChange}/>
