@@ -2,7 +2,7 @@ import React from "react";
 
 var filePath = {
   newfeature: require("./Amne\ Proposal.docx"),
-  rawfile: require("./API_Key.txt")
+  rawfile: require("./amneGit.rar")
 };
 
 const logoStyle = {

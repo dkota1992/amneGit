@@ -10,7 +10,7 @@ class SortCloser extends React.Component{
 
   sort(arr){
     arr.sort(function(a, b) {
-    return (a.distances.sum).localeCompare(b.distances.sum)
+    return parseFloat(a.distances.sum) - parseFloat(b.distances.sum)
     });
     return arr;
   }
@@ -27,7 +27,7 @@ class SortCloser extends React.Component{
           distances:{from_origin1: this.state.distance.rows[0].elements[i].distance.text,
               from_origin2: this.state.distance.rows[1].elements[i].distance.text,
               sum: String(Number(parseFloat(this.state.distance.rows[0].elements[i].distance.text) +
-                  parseFloat(this.state.distance.rows[1].elements[i].distance.text)).toFixed(1))+ " km"}};
+                  parseFloat(this.state.distance.rows[1].elements[i].distance.text)).toFixed(1))}};
 
       unSorted.push(temp);
     }

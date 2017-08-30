@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SortCloser from "./SortCloser";
 
-var key = "AIzaSyCUaItdUlBQhdXQ-dCSfrWadhxXw_D6AEk"
+var key = "AIzaSyDN-my3Pi1wsJyYxT8EZa2mSMEFJxkWwUk"
 
 class Distance extends React.Component{
   constructor(props){

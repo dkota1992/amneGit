@@ -3,7 +3,7 @@ import axios from 'axios';
 import Places from "./Places.js";
 import Distance from "./Distance";
 
-var key = 'AIzaSyCUaItdUlBQhdXQ-dCSfrWadhxXw_D6AEk';
+var key = 'AIzaSyDN-my3Pi1wsJyYxT8EZa2mSMEFJxkWwUk';
 
 class SearchPlace extends React.Component{
   constructor(props){
